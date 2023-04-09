@@ -1,10 +1,10 @@
 import re
 import colorama 
 from colorama import Fore
-from test_mongo_connection import delete_project,update_project,create_project,find_all_projects,insert_user, find_user_by_email, find_user_by_password
+from test_mongo_connection import search_project_by_date,delete_project,update_project,create_project,find_all_projects,insert_user, find_user_by_email, find_user_by_password
 from functions import main_menu, validate_password, project_menu, validate_date
 print()
-print(Fore.GREEN+"                 Welcome to the Crowd-Funding Console App  \n")
+print(Fore.YELLOW+"                 Welcome to the Crowd-Funding Console App  \n")
 
 
 main_menu()
@@ -88,6 +88,7 @@ while True:
         main_menu()
 
         choice = input(Fore.WHITE+"\nYour number will be: ")
+        print()
 
     # """-----------------------------------------------------------------"""
     
@@ -125,9 +126,9 @@ while True:
             except TypeError:
                 print(Fore.RED+"wrong password, try again")
 
-        
+        print()
         print(Fore.BLUE+"User has logged in Successfully \n")
-
+        print()
         while True:
             print()
 
@@ -184,9 +185,10 @@ while True:
 
             
             elif ch == "2":
-
+                print()
                 find_all_projects()
                 
+                2
                 
 
             elif ch == "3":
@@ -197,14 +199,21 @@ while True:
 
                 delete_project(found_user["_id"])
         
+            elif ch == "5":
 
+                print()
+                req_date = input(Fore.WHITE+"Enter the Start Date by which you want to search: ")
+                search_project_by_date(req_date)
 
-                # """******************************"""
+            elif ch == "6":
+                break
+
+                
 
         main_menu()
         choice = input(Fore.WHITE+"\nYour number will be: ")
 
-    # """---------------------------------------------------"""
+    
 
     elif choice == "3":
         break
